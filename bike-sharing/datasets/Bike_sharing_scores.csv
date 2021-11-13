@@ -1,0 +1,6 @@
+S/N,XGBoos Score,Ensemble Score,Kaggle Score,Options
+1,-107.32,-106.47,1.37498,Default options
+2,-82.76,-73.95,1.50734,"xgb n_estimators=1500; hyperparameter_tune_kwargs = {'num_trials': 5, 'scheduler' : 'local', 'searcher': 'auto'}; time_limit=600s"
+3,-74,-68,1.50734,"xgb n_estimators=1500; hyperparameter_tune_kwargs = {'num_trials': 8, 'scheduler' : 'local', 'searcher': 'auto'}; time_limit=780s"
+4,-74,-73.43,1.50734,"xgb n_estimators=2000; hyperparameter_tune_kwargs = {'num_trials': 5, 'scheduler' : 'local', 'searcher': 'auto'}; time_limit=780s"
+5,-74.47,-73.35,1.50734,"xgb n_estimators=2000; xgb learnin_rate=0.05 hyperparameter_tune_kwargs = {'num_trials': 5, 'scheduler' : 'local', 'searcher': 'auto'}; time_limit=780s"

@@ -2,30 +2,24 @@
 
 **The Best Performing Model**
 
-The Autogluon TabularPredictor makes use of many models and uses the Ensemble technique to come up with the best result. In the first training round, no model was specified. Autogluon TabularPredictor used the default models:
+The Autogluon TabularPredictor makes use of many models and uses the Ensemble technique to come up with the best result. In the first training round, the data was used as-is and the default parameters of TabularPredictor was used. Autogluon TabularPredictor used these default models:
 
 'CatBoostModel', 'WeightedEnsembleModel', 'LGBModel', 'KNNModel', 'XTModel', 'XGBoostModel', 'RFModel', 'NNFastAiTabularModel'
 
-Of all these WeightedEnsembleModel had the best performance, followed by XGBoostModel. This is shown in Fig1 of the attached file `support file.docx`.
-
-In subsequent training rounds, custom values of hyperparameters were used to train XGBoost model. For each set of hyperparameters, predictions were generated and submitted to Kaggle. The results of this operation is tabulated in fig.2 of the attached file `support file.docx`
-
+Of all these WeightedEnsembleModel had the best performance, followed by XGBoostModel.
 
 **Feature Engineering**
 
-A bit of Feature Engineering was done to improve the perfoemance of the predictors.
+In the second round of training the default TabularPredictor parameters were used. However, the data was pre-processed using a number of feature-engineering practices.
+This is the One-hot encoding of `season` feature. Also the `weather` column was converted to categorical type using pandas `astype` function. In addition, the `datetime` column was decomposed into its constituent year, month, day.
 
-This is the One-hot encoding of `season` feature.
-
-
+This feature engineering led to a great improvement in the Kaggle score.
 
 
 **Hyperparameter Tuning**
 
-A number of combinations of the hyperparameters were used. When the hyperparamters changed from the default, there was a clear increase in the Kaggle Score and the Model performance. However, with subsequent changes, there were noticeable changes in the model performance but the Kaggle submission score did not change. The default set of hyperparameters was not optimum.
-
-This is shown in the attached file.
+The main parameter that was tuned for TabularPredictor was the `presets`. Default value of `medium_quality_faster_train` was used for the first two rounds of training. For subsequent rounds, the values of `high_quality_fast_inference_only_refit` and `best_quality` were used. Each of these contributed to increase in the Kaggle score.
 
 **Final Summary**
 
-The first training run makes use of Autogluon TabularPredictor default models and hyperparameters. The ensemble technique was employed to get the final model. Among the base models, XGBBoost showed the best performance. Subsequent training round were done by combining different hyperparanters of the XGBoost Model and creating an EnsembleModel from it. The result shows an increase in performance and score for the second run. However, further changes in the hyperparamters, though adding marginal improvements, did not lead to corresponding increase in the Kaggle score.
+The first training run makes use of Autogluon TabularPredictor default models and hyperparameters. The ensemble technique was employed to get the final model. Among the base models, Ensemble showed the best performance, followed by XGBoost. Subsequent training round were done by using different values of TabularPredictor `presets`. The results show an increase in performance and score.
